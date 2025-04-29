@@ -1,28 +1,48 @@
-/node_modules
-.env/
-.DS_Store
-*.log
-*.tmp
-*.bak
-*.swp
-*.swo
-.idea/
-.vscode/
-dist/
-build/
-coverage/
-.nyc_output/
-*.env
-*.env.local
-*.env.development
-*.env.test
-*.env.production
-
-# Ignore environment variables
-.env
-
-# Ignore node_modules directory
+# Node modules
 node_modules/
 
-# Ignore package-lock.json
+# Environment variables
+.env
+.env.*
+!.env.example
+
+# Log files
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE/editor settings
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Build output
+dist/
+build/
+
+# Test coverage
+coverage/
+.nyc_output/
+
+# Temporary files
+*.tmp
+*.bak
+
+# Package locks
 package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Optional npm debug files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Optional REPL history
+.node_repl_history
+
+# Mac system files
+*.DS_Store
