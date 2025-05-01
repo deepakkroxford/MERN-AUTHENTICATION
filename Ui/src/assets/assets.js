@@ -5,9 +5,11 @@ import mail_icon from './mail_icon.svg'
 import person_icon from './person_icon.svg'
 import hand_wave from './hand_wave.png'
 import header_img from './header_img.png'
+import microsoftAuthenticator from './microsoft-authenticator.svg'
 
 export const assets = {
-    arrow_icon,
+     arrow_icon,
+    microsoftAuthenticator,
     lock_icon,
     logo,
     mail_icon,
