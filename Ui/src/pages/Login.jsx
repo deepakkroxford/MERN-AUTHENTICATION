@@ -11,36 +11,38 @@ const Login = () => {
   const [password, setPassword] = useState('');
 
   const navigate = useNavigate();
-  const {backendUrl,setIsLoggedin,userData,setUserData} = useContext(AppContext);
+  const { backendUrl, setIsLoggedin, userData, setUserData, getUserData } = useContext(AppContext);
 
-  const onSubmitHandler = async(e)=>{
-    try{
+  const onSubmitHandler = async (e) => {
+    try {
       e.preventDefault();
-      axios.defaults.withCredentials=true;
-      if(state=='Sign Up') {
-        const response = await axios.post(backendUrl+'/api/auth/register',{name,email,password});
-        if(response.data.success) {
+      axios.defaults.withCredentials = true;
+      if (state == 'Sign Up') {
+        const response = await axios.post(backendUrl + '/api/auth/register', { name, email, password });
+        if (response.data.success) {
           setIsLoggedin(true);
+          getUserData();
           navigate('/');
-        }else{
+        } else {
           console.log(data.message);
         }
       }
       else {
-        const response = await axios.post(backendUrl+'/api/auth/login',{email,password});
-        if(response.data.success) {
+        const response = await axios.post(backendUrl + '/api/auth/login', { email, password });
+        if (response.data.success) {
           setIsLoggedin(true);
+          getUserData();
           navigate('/');
-        }else{
+        } else {
           console.log(data.message);
         }
       }
-    }catch(error){
+    } catch (error) {
       console.log(error);
     }
   }
 
-  
+
   return (
     <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-blue-200 to-purple-400 px-6">
       <div className="bg-white p-8 rounded-2xl shadow-xl w-full max-w-md space-y-6">
@@ -92,7 +94,7 @@ const Login = () => {
             />
           </div>
 
-          <p onClick={()=>navigate('/reset-password')} className="text-right text-sm text-indigo-600 cursor-pointer hover:underline mb-2">
+          <p onClick={() => navigate('/reset-password')} className="text-right text-sm text-indigo-600 cursor-pointer hover:underline mb-2">
             Forgot password?
           </p>
 
