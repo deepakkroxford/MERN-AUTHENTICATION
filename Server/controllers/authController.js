@@ -82,7 +82,7 @@ const userLogin = async (req, res) => {
         }
 
         // Fix typo in JWT_SECRETE to JWT_SECRET and use correct user reference
-        const token = jwt.sign({ id: userData._id }, process.env.JWT_SECRET, { expiresIn: '7d' });
+        const token = jwt.sign({ id: userData._id,email}, process.env.JWT_SECRET, { expiresIn: '7d' });
 
         res.cookie('token', token, {
             httpOnly: true,
@@ -226,7 +226,7 @@ const resendOtp = async (req, res) => {
         const emailText = `Your OTP is ${otp}. Reset your otp.`;
         await sendEmail(user.email, emailSubject, emailText);
 
-        res.status(200).json({ success: false, message: 'Resend Otp send SuccessFully' });
+        res.status(200).json({ success: true, message: 'Resend Otp send SuccessFully' });
 
 
     } catch {
@@ -245,7 +245,7 @@ const resetPassword = async (req, res) => {
         return res.status(400).json({ success: false, message: 'Required field is missing' });
     }
     try {
-        const user = await userModel.findOne({email});
+        const user = await userModel.findOne({ email });
         if (!user) {
             return res.status(400).json({ success: false, message: 'user not found' });
         }

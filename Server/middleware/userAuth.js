@@ -1,4 +1,3 @@
-
 import jwt from 'jsonwebtoken'
 import userModel from '../models/user.js';
 
@@ -12,12 +11,17 @@ const userAuth = async (req, res, next) => {
     }
     try {
         const decodeToken = jwt.verify(token, process.env.JWT_SECRET);
-        const verfiedUser = await userModel.findOne({email:decodeToken.email});
-        console.info("the verfiedUser ",verfiedUser)
+        const verifiedUser = await userModel.findById(decodeToken.id);
+        
+        if (!verifiedUser) {
+            return res.status(404).json({ success: false, message: 'User not found' });
+        }
+
+        console.info("the verifiedUser ", verifiedUser);
 
         // Assigning the decoded token's ID to req.userId
-        req.userId = verfiedUser._id;
-        console.log("the requserId setting in middleware ",req.userId);
+        req.userId = verifiedUser._id;
+        console.log("the req.userId setting in middleware ", req.userId);
         next();
     } catch (error) {
         if (error.name === 'TokenExpiredError') {

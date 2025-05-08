@@ -8,8 +8,8 @@ authRouter.post('/login', userLogin);
 authRouter.post('/logout', userLogout);
 authRouter.post('/send-verify-otp', userAuth, sendVerifyOtp);
 authRouter.post('/verify-account', userAuth, verfiyEmail);
-authRouter.post('/is-auth', userAuth, isAuthenticated);
-authRouter.post('/send-resend-otp',resendOtp);
+authRouter.get('/is-auth', userAuth, isAuthenticated);
+authRouter.post('/reset-password-otp',resendOtp);
 authRouter.post('/reset-password',resetPassword);
 
 

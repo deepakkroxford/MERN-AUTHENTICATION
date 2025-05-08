@@ -7,11 +7,9 @@ const getUserData = async (req, res) => {
         if (!user) {
             return res.status(404).json({ success: false, message: 'user not found' });
         }
-        return res.status(200).json({success:true,userdata:{
+        return res.status(200).json({success:true,userData:{
             name : user.name,
-            isVerified:user.isVerified,
-
-
+            isVerified:user.isVerified
         }});
     } 
     catch (error) {
