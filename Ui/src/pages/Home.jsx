@@ -5,7 +5,7 @@ import AppContext from '../context/AppContext';
 const Home = () => {
 
   const {userData} = useContext(AppContext);
-  console.log("the userdata in home page",userData.name);
+  // console.log("the userdata in home page",userData.name);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-purple-50 pt-24">
