@@ -12,7 +12,7 @@ export const AppContextProvider = (props) => {
     const getAuthState = async () => {
         try {
             axios.defaults.withCredentials = true;
-            const { data } = await axios.get('http://localhost:4040/api/auth/is-auth');
+            const { data } = await axios.get(backendUrl + '/api/auth/is-auth',{ withCredentials: true });
             console.log(data);
             if (data.success) {
                 setIsLoggedin(true);
