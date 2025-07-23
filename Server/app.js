@@ -8,14 +8,18 @@ import cors from 'cors'
 
 configDotenv();
 dbConnection();
-
-const allowedOrigin = ['http://localhost:5173']
+// https://mern-authentication-6yia.onrender.com
+const allowedOrigin = ['http://localhost:5173/']
 
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({}));
 app.use(cookieParser());
-app.use(cors({ origin: allowedOrigin, credentials: true }));
+
+app.use(cors({
+  origin: 'http://localhost:5173', // Frontend origin
+  credentials: true               // Allow cookies to be sent
+}));
 
 app.get('/', (req, res) => {
     res.send('api is working perfectly');
