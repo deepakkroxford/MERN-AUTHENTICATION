@@ -1,6 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FaUser, FaEnvelope, FaLock, FaEye, FaEyeSlash, FaSpinner } from 'react-icons/fa';
+// import { useGoogleLogin, GoogleOAuthProvider } from '@react-oauth/google';
 import AppContext from '../context/AppContext';
 import axios from 'axios';
 
@@ -14,6 +15,23 @@ const Login = () => {
 
   const navigate = useNavigate();
   const { backendUrl, setIsLoggedin, getUserData } = useContext(AppContext);
+
+
+  // const responseGoogle = async (authResult) => {
+  //   try {
+  //       console.log(authResult);
+  //   }catch(err){
+  //     console.error("Error while requesting google code", err);
+  //   }
+  // }
+
+  // const googleLogin = useGoogleLogin({
+  //   onSuccess:responseGoogle,
+  //   onError:responseGoogle,
+  //   flow:'auth-code'
+  // })
+
+
 
   const onSubmitHandler = async (e) => {
     try {
